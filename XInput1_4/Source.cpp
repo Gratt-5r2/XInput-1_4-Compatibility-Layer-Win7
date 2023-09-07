@@ -35,16 +35,17 @@ private:
     auto originalLibraryPath = std::filesystem::path( systemDirectory ) / libraryName;
 
     m_lpOriginalLibrary = LoadLibrary( originalLibraryPath.string().c_str());
-
-    if( m_lpOriginalLibrary ) {
-      m_lpXInputGetState              = (LPXInputGetStateProc)              GetProcAddress( m_lpOriginalLibrary, "XInputGetState" );
-      m_lpXInputSetState              = (LPXInputSetStateProc)              GetProcAddress( m_lpOriginalLibrary, "XInputSetState" );
-      m_lpXInputGetCapabilities       = (LPXInputGetCapabilitiesProc)       GetProcAddress( m_lpOriginalLibrary, "XInputGetCapabilities" );
-      m_lpXInputEnable                = (LPXInputEnableProc)                GetProcAddress( m_lpOriginalLibrary, "XInputEnable" );
-      m_lpXInputGetBatteryInformation = (LPXInputGetBatteryInformationProc) GetProcAddress( m_lpOriginalLibrary, "XInputGetBatteryInformation" );
-      m_lpXInputGetKeystroke          = (LPXInputGetKeystrokeProc)          GetProcAddress( m_lpOriginalLibrary, "XInputGetKeystroke" );
-      m_lpXInputGetAudioDeviceIds     = (LPXInputGetAudioDeviceIdsProc)     GetProcAddress( m_lpOriginalLibrary, "XInputGetAudioDeviceIds" );
-    }
+    if( !m_lpOriginalLibrary )
+      return false;
+    
+    m_lpXInputGetState              = (LPXInputGetStateProc)              GetProcAddress( m_lpOriginalLibrary, "XInputGetState" );
+    m_lpXInputSetState              = (LPXInputSetStateProc)              GetProcAddress( m_lpOriginalLibrary, "XInputSetState" );
+    m_lpXInputGetCapabilities       = (LPXInputGetCapabilitiesProc)       GetProcAddress( m_lpOriginalLibrary, "XInputGetCapabilities" );
+    m_lpXInputEnable                = (LPXInputEnableProc)                GetProcAddress( m_lpOriginalLibrary, "XInputEnable" );
+    m_lpXInputGetBatteryInformation = (LPXInputGetBatteryInformationProc) GetProcAddress( m_lpOriginalLibrary, "XInputGetBatteryInformation" );
+    m_lpXInputGetKeystroke          = (LPXInputGetKeystrokeProc)          GetProcAddress( m_lpOriginalLibrary, "XInputGetKeystroke" );
+    m_lpXInputGetAudioDeviceIds     = (LPXInputGetAudioDeviceIdsProc)     GetProcAddress( m_lpOriginalLibrary, "XInputGetAudioDeviceIds" );
+    return true;
   }
 
   XInput() {
