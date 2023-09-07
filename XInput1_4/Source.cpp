@@ -7,14 +7,14 @@ EXTERN_C_START
 typedef DWORD (WINAPI* LPXInputGetStateProc )(DWORD, void*);
 typedef DWORD (WINAPI* LPXInputSetStateProc )(DWORD, void*);
 typedef DWORD (WINAPI* LPXInputGetCapabilitiesProc )(DWORD, DWORD, void*);
-typedef void (WINAPI* LPXInputEnableProc )(BOOL);
+typedef void  (WINAPI* LPXInputEnableProc )(BOOL);
 typedef DWORD (WINAPI* LPXInputGetBatteryInformationProc )(DWORD, BYTE, void*);
 typedef DWORD (WINAPI* LPXInputGetKeystrokeProc )(DWORD, DWORD, void*);
 typedef DWORD (WINAPI* LPXInputGetAudioDeviceIdsProc )(DWORD, LPWSTR, UINT*, LPWSTR, UINT*);
 
 
 struct XInput {
-  HMODULE                           g_lpOriginalLibrary             = NULL;
+  HMODULE                           m_lpOriginalLibrary             = NULL;
   LPXInputGetStateProc              m_lpXInputGetState              = NULL;
   LPXInputSetStateProc              m_lpXInputSetState              = NULL;
   LPXInputGetCapabilitiesProc       m_lpXInputGetCapabilities       = NULL;
@@ -34,16 +34,16 @@ private:
     auto systemDirectoryLength = GetSystemDirectory( systemDirectory, MAX_PATH );
     auto originalLibraryPath = std::filesystem::path( systemDirectory ) / libraryName;
 
-    g_lpOriginalLibrary = LoadLibrary( originalLibraryPath.string().c_str());
+    m_lpOriginalLibrary = LoadLibrary( originalLibraryPath.string().c_str());
 
-    if( g_lpOriginalLibrary ) {
-      m_lpXInputGetState              = (LPXInputGetStateProc)              GetProcAddress( g_lpOriginalLibrary, "XInputGetState" );
-      m_lpXInputSetState              = (LPXInputSetStateProc)              GetProcAddress( g_lpOriginalLibrary, "XInputSetState" );
-      m_lpXInputGetCapabilities       = (LPXInputGetCapabilitiesProc)       GetProcAddress( g_lpOriginalLibrary, "XInputGetCapabilities" );
-      m_lpXInputEnable                = (LPXInputEnableProc)                GetProcAddress( g_lpOriginalLibrary, "XInputEnable" );
-      m_lpXInputGetBatteryInformation = (LPXInputGetBatteryInformationProc) GetProcAddress( g_lpOriginalLibrary, "XInputGetBatteryInformation" );
-      m_lpXInputGetKeystroke          = (LPXInputGetKeystrokeProc)          GetProcAddress( g_lpOriginalLibrary, "XInputGetKeystroke" );
-      m_lpXInputGetAudioDeviceIds     = (LPXInputGetAudioDeviceIdsProc)     GetProcAddress( g_lpOriginalLibrary, "XInputGetAudioDeviceIds" );
+    if( m_lpOriginalLibrary ) {
+      m_lpXInputGetState              = (LPXInputGetStateProc)              GetProcAddress( m_lpOriginalLibrary, "XInputGetState" );
+      m_lpXInputSetState              = (LPXInputSetStateProc)              GetProcAddress( m_lpOriginalLibrary, "XInputSetState" );
+      m_lpXInputGetCapabilities       = (LPXInputGetCapabilitiesProc)       GetProcAddress( m_lpOriginalLibrary, "XInputGetCapabilities" );
+      m_lpXInputEnable                = (LPXInputEnableProc)                GetProcAddress( m_lpOriginalLibrary, "XInputEnable" );
+      m_lpXInputGetBatteryInformation = (LPXInputGetBatteryInformationProc) GetProcAddress( m_lpOriginalLibrary, "XInputGetBatteryInformation" );
+      m_lpXInputGetKeystroke          = (LPXInputGetKeystrokeProc)          GetProcAddress( m_lpOriginalLibrary, "XInputGetKeystroke" );
+      m_lpXInputGetAudioDeviceIds     = (LPXInputGetAudioDeviceIdsProc)     GetProcAddress( m_lpOriginalLibrary, "XInputGetAudioDeviceIds" );
     }
   }
 
