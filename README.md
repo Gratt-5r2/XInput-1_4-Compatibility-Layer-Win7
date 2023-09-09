@@ -13,8 +13,8 @@ Functions from version 1.4 will work in older versions if they are matched in th
 |**XInputGetCapabilities**       |**XInputGetCapabilities**       |**XInputGetCapabilities**       |**XInputGetCapabilities**      |
 |XInputGetDSoundAudioDeviceGuids |XInputGetDSoundAudioDeviceGuids |XInputGetDSoundAudioDeviceGuids |---                            |
 |---                             |---                             |**XInputGetBatteryInformation** |**XInputGetBatteryInformation**|
-|---                             |---                             |**XInputGetAudioDeviceIds**     |**XInputGetKeystroke**         |
-|---                             |---                             |---                             |**XInputGetAudioDeviceIds**    |
+|---                             |---                             |**XInputGetAudioDeviceIds**     |**XInputGetAudioDeviceIds**    |
+|---                             |---                             |---                             |**XInputGetKeystroke**         |
 
 # License
 This library is licensed under [MIT license](https://github.com/Gratt-5r2/XInput-1_4-Compatibility-Layer-Win7/blob/master/LICENSE.txt)
