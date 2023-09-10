@@ -11,7 +11,7 @@ Functions from version 1.4 will work in older versions if they are matched in th
 |**XInputGetState**              |**XInputGetState**              |**XInputGetState**              |**XInputGetState**             |
 |**XInputSetState**              |**XInputSetState**              |**XInputSetState**              |**XInputSetState**             |
 |**XInputGetCapabilities**       |**XInputGetCapabilities**       |**XInputGetCapabilities**       |**XInputGetCapabilities**      |
-|XInputGetDSoundAudioDeviceGuids |XInputGetDSoundAudioDeviceGuids |XInputGetDSoundAudioDeviceGuids |---                            |
+|~~XInputGetDSoundAudioDeviceGuids~~ |~~XInputGetDSoundAudioDeviceGuids~~ |~~XInputGetDSoundAudioDeviceGuids~~ |---                            |
 |---                             |---                             |**XInputGetBatteryInformation** |**XInputGetBatteryInformation**|
 |---                             |---                             |**XInputGetAudioDeviceIds**     |**XInputGetAudioDeviceIds**    |
 |---                             |---                             |---                             |**XInputGetKeystroke**         |
